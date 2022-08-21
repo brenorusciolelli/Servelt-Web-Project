@@ -23,14 +23,15 @@ public class NovaEmpresaServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		String nomeEmpresa = request.getParameter("nome");
+		String cnpj = request.getParameter("cnpj");
 		
 		out.append("<html>");
 		out.append("<body>");
-		out.append("<h3>Empresa " + nomeEmpresa + " Cadastrada com Sucesso!</h3>");
+		out.append("<h3>Empresa " + nomeEmpresa + ", CNPJ: " + cnpj + " Cadastrada com Sucesso!</h3>");
 		out.append("</body>");
 		out.append("</html>");
 		
-		System.out.println("Empresa " + nomeEmpresa + " Cadastrada com Sucesso!");
+		System.out.println("Empresa " + nomeEmpresa +  ", " + cnpj + " Cadastrada com Sucesso!");
 	}
 
 }
