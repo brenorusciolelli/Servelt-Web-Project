@@ -10,15 +10,18 @@ String cnpj = (String)request.getAttribute("cnpj");
 <title>Novas Empresas</title>
 </head>
 <body>
-<h3>Empresa: <%=nomeEmpresa + " CNPJ:" + cnpj%> Cadastrada com Sucesso!</h3>
+<h3>Empresa: ${nomeEmpresa}</h3>
+<h3>CNPJ: ${cnpj}</h3>
+<h2>Cadastrada com Sucesso!</h2>
+
 <table>
   <tr>
     <th>Empresa</th>
     <th>CNPJ</th>
   </tr>
   <tr>
-    <td><%=nomeEmpresa%></td>
-    <td><%=cnpj%></td>
+    <td>${nomeEmpresa}</td>
+    <td>${cnpj}</td>
   </tr>
 </table>
 </body>
