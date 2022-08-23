@@ -3,6 +3,7 @@ package br.com.brbtechnology.gerenciador.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,22 +15,30 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/novaempresa")
 public class NovaEmpresaServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
+	
+	Empresa empresa = new Empresa();
+	Banco banco = new Banco();
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("Cadastrando Nova Empresa");
 		
 		PrintWriter out = response.getWriter();
 		
 		String nomeEmpresa = request.getParameter("nome");
-		String cnpj = request.getParameter("cnpj");
+		empresa.setNome(nomeEmpresa);
 		
-		out.append("<html>");
-		out.append("<body>");
-		out.append("<h3>Empresa " + nomeEmpresa + ", CNPJ: " + cnpj + " Cadastrada com Sucesso!</h3>");
-		out.append("</body>");
-		out.append("</html>");
+		String cnpj = request.getParameter("cnpj");
+		empresa.setCNPJ(cnpj);
+		
+		banco.adicionar(empresa);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/novaEmpresaCriada.jsp");
+		request.setAttribute("nomeEmpresa", empresa.getNome());
+		request.setAttribute("cnpj", empresa.getCNPJ());
+		rd.forward(request, response);
 		
 		System.out.println("Empresa " + nomeEmpresa +  ", " + cnpj + " Cadastrada com Sucesso!");
 	}
