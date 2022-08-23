@@ -1,8 +1,4 @@
-<%
-String nomeEmpresa = (String)request.getAttribute("nomeEmpresa");
-String cnpj = (String)request.getAttribute("cnpj");
-%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,19 +6,14 @@ String cnpj = (String)request.getAttribute("cnpj");
 <title>Novas Empresas</title>
 </head>
 <body>
-<h3>Empresa: ${nomeEmpresa}</h3>
-<h3>CNPJ: ${cnpj}</h3>
-<h2>Cadastrada com Sucesso!</h2>
+	
+	<c:if test="${not empty nomeEmpresa}">
+		Empresa ${nomeEmpresa} cadastrada com sucesso!
+	</c:if>
+	
+	<c:if test="${empty nomeEmpresa}">
+		Nenhuma empresa encontrada!
+	</c:if>
 
-<table>
-  <tr>
-    <th>Empresa</th>
-    <th>CNPJ</th>
-  </tr>
-  <tr>
-    <td>${nomeEmpresa}</td>
-    <td>${cnpj}</td>
-  </tr>
-</table>
 </body>
 </html>

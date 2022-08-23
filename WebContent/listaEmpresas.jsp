@@ -15,7 +15,6 @@
 			<li> ${empresa.nome}></li>
 			<li>${empresa.CNPJ}></li>
 		</c:forEach>
-		
 	</ul>
 
 </body>
